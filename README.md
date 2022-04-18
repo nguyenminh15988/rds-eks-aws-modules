@@ -9,3 +9,9 @@ Not implement yet
 # Provision an infrastrure by terraform 
 using aws module
 
+infrastructure:
+- Network: VPC, PrivateSubnet, PublicSubnet 
+- Route53
+- EKS cluster ( ingress controller , deployment file, deployment rollingupdate )
+- RDS
+
