@@ -1,0 +1,15 @@
+#able to install by helm but we can use simple code below for ingress load balancer
+
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: nocode-app
+spec:
+  rules:
+    - host: product.com 
+  http:
+    paths:
+      - path: /
+        backend:
+          serviceName: nocode-nodeport # name of the service inside cluster
+          servicePort: 80
