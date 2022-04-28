@@ -6,7 +6,7 @@ module "db" {
 
   engine            = "mysql"
   engine_version    = "5.7.25"
-  instance_class    = "db.t2.micro"
+  instance_class    = "db.t2.medium"
   allocated_storage = 5
 
   db_name  = "demodb"
@@ -26,11 +26,15 @@ module "db" {
   backup_window      = "03:00-06:00"
 
   # DB subnet group
-  subnet_ids = module.vpc.private_subnets
+  create_db_subnet_group = true
+  db_subnet_group_name = "db-subnet-group"
+  subnet_ids = data.aws_subnet_ids.private_subnets.ids
 
   # DB parameter group
   family = "mysql5.7"
 
   # DB option group
   major_engine_version = "5.7"
+
+  depends_on = [module.vpc]
 }

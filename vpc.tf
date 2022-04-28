@@ -5,9 +5,10 @@ variable "rds_admin_password" {
 }
 
 provider "aws" {
-  access_key = "AKIARL3FXW7EL4KO7H7Z"
-  secret_key = "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"
-  region     = "ap-southeast-1"
+  access_key = "AKIAZJMXRRE4BDNLO66K"
+  secret_key = "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"
+#  token      = ""
+  region     = "us-east-1"
 }
 
 # data "aws_availability_zones" "available" {}
@@ -15,6 +16,14 @@ provider "aws" {
 resource "random_string" "suffix" {
   length  = 8
   special = false
+}
+
+data "aws_subnet_ids" "private_subnets" {
+  vpc_id = module.vpc.vpc_id
+
+  tags = {
+    Name = "eks-vpc-private-*"
+  }
 }
 
 # have no right for getting avaibility zone on test environment
@@ -25,7 +34,7 @@ module "vpc" {
   name = "eks-vpc"
   cidr = "10.0.0.0/16"
   #   azs                  = data.aws_availability_zones.available.names
-  azs                  = ["ap-southeast-1a", "ap-southeast-1b", "ap-southeast-1c"]
+  azs                  = ["us-east-1a", "us-east-1b", "us-east-1c"]
   private_subnets      = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
   public_subnets       = ["10.0.4.0/24", "10.0.5.0/24", "10.0.6.0/24"]
   enable_nat_gateway   = true
@@ -49,3 +58,4 @@ module "vpc" {
     Provisioner                                   = "terraform"
   }
 }
+
