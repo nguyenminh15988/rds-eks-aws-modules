@@ -15,3 +15,15 @@ infrastructure:
 - EKS cluster ( ingress controller , deployment file, deployment rollingupdate )
 - RDS
 
+# Things to add
+1. Cluster autoscaling
+2. Route 53 management
+3. Private API access
+4. Cloudfront
+5. RDS read replicas
+6. Add more worker group difference instance type or managed group
+7. TLS cert management
+8. Monitoring and Alert
+9. Install Jenkins on eks and configuration deployment pipeline
+10. Intall ELK using helm and configuration log for monitoring 
+
