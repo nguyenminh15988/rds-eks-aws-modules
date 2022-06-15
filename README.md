@@ -7,7 +7,7 @@ Not implement yet
 
 
 # Provision an infrastrure by terraform 
-using aws module
+using aws module.
 
 infrastructure:
 - Network: VPC, PrivateSubnet, PublicSubnet 
